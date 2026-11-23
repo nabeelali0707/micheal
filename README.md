@@ -1,6 +1,6 @@
 # MCQ Helper
 
-Background tool for Windows. It takes a screenshot when you press a hotkey, sends it to a local Ollama vision model (`MichelRosselli/bonsai-27b`), and shows the answer in a small popup. Each answer is the option letter plus a 2-line explanation. The prompt is tuned for computer architecture and Irvine x86 MASM assembly.
+Background tool for Windows. It takes a screenshot when you press a hotkey, sends it to the local Ollama vision model (`gemma4:e4b`), and shows the answer in a small popup. LaTeX expressions are rendered as images in the popup.
 
 ## Install on a new PC
 
@@ -8,7 +8,7 @@ Background tool for Windows. It takes a screenshot when you press a hotkey, send
    On the first installer screen, tick **"Add python.exe to PATH"**. Keep the default options, which include tcl/tk.
 2. **Install Ollama** from <https://ollama.com/download>, or run `winget install Ollama.Ollama`.
 3. **Get this folder** onto the PC: `git clone https://github.com/nabeelali0707/micheal.git`, or on GitHub click **Code → Download ZIP** and unzip it.
-4. **Double-click `setup.bat`.** It checks Python, tkinter and Ollama, installs the Python packages (`keyboard`, `pillow`) and offers to download the model (about 4.4 GB). Fix anything it marks with `[X]`, then run it again.
+4. **Double-click `setup.bat`.** It checks Python, tkinter and Ollama, installs the Python packages (`keyboard`, `pillow`, `matplotlib`) and offers to download `gemma4:e4b`. Fix anything it marks with `[X]`, then run it again.
 5. **Double-click `start.bat`.** A message in the bottom-right corner says it is running.
 
 The model needs about 6 GB of free RAM (or VRAM). On a weak laptop, the first answer can take a minute or more.
@@ -29,7 +29,10 @@ Double-click `start.bat`, or run `pythonw mcq_helper.py`. The program runs in th
 | Hotkey | Action |
 | --- | --- |
 | `Ctrl+Shift+X` | Take a screenshot and show the answer popup (top-right corner) |
-| `Ctrl+Shift+Z` | Hide the popup. The program keeps running |
+| `Ctrl+Shift+/` | Show the live progress popup |
+| `Ctrl+Shift+'` | Show the latest answer popup |
+| `Ctrl+Shift+H` | Hide the answer, progress, and notification popups |
+| `Ctrl+Shift+Z` | Legacy hide shortcut |
 | `Ctrl+Shift+Q` | Quit |
 
 A small notification in the bottom-right corner tells you what the program is doing:

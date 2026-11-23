@@ -39,13 +39,13 @@ echo [OK] tkinter
 
 rem ---------- 3. Python packages ----------
 echo.
-echo Installing Python packages (keyboard, pillow)...
+echo Installing Python packages (keyboard, pillow, matplotlib)...
 %PY% -m pip install -r requirements.txt
 if errorlevel 1 (
     echo [X] pip install failed. Check your internet connection.
     goto :end
 )
-%PY% -c "import keyboard, PIL" || (echo [X] packages still not importable & goto :end)
+%PY% -c "import keyboard, PIL, matplotlib" || (echo [X] packages still not importable & goto :end)
 echo [OK] Python packages
 
 rem ---------- 4. Ollama ----------
@@ -65,17 +65,17 @@ echo [OK] Ollama found: %OLLAMA%
 
 rem ---------- 5. Model ----------
 echo.
-"%OLLAMA%" list 2>nul | findstr /i "MichelRosselli/bonsai-27b" >nul
+"%OLLAMA%" list 2>nul | findstr /i "gemma4:e4b" >nul
 if errorlevel 1 (
-    echo The model is not downloaded yet ^(about 4.4 GB^).
+    echo The model gemma4:e4b is not downloaded yet.
     choice /m "Download it now"
     if errorlevel 2 (
         echo Skipped. MCQ Helper will download it automatically on first start.
     ) else (
-        "%OLLAMA%" pull MichelRosselli/bonsai-27b
+        "%OLLAMA%" pull gemma4:e4b
     )
 ) else (
-    echo [OK] Model MichelRosselli/bonsai-27b is installed
+    echo [OK] Model gemma4:e4b is installed
 )
 
 echo.
